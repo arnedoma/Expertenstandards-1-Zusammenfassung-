@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expertenstandard Ernährungsmanagement - Team-Briefing</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 2.2em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .header .subtitle {
+            font-size: 1.1em;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+        
+        .meta-info {
+            background: #ecf0f1;
+            padding: 20px 40px;
+            border-left: 5px solid #3498db;
+            margin: 0;
+        }
+        
+        .meta-info p {
+            margin: 5px 0;
+            font-size: 0.95em;
+        }
+        
+        .content {
+            padding: 40px;
+        }
+        
+        .ziel-box {
+            background: linear-gradient(135deg, #f39c12 0%, #e74c3c 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .ziel-box h2 {
+            font-size: 1.8em;
+            margin-bottom: 15px;
+        }
+        
+        .ziel-box p {
+            font-size: 1.1em;
+            line-height: 1.8;
+        }
+        
+        .section {
+            margin-bottom: 35px;
+        }
+        
+        .section-title {
+            background: linear-gradient(to right, #3498db, #2980b9);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 10px;
+            font-size: 1.4em;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+        }
+        
+        .section-title .number {
+            background: rgba(255,255,255,0.3);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+        
+        .handlungsebenen {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .ebene-card {
+            background: white;
+            border: 2px solid #3498db;
+            border-radius: 12px;
+            padding: 20px;
+            transition: all 0.3s ease;
+        }
+        
+        .ebene-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(52, 152, 219, 0.3);
+        }
+        
+        .ebene-card .ebene-nummer {
+            background: #3498db;
+            color: white;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .ebene-card h4 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+        
+        .ebene-card p {
+            color: #555;
+            font-size: 0.95em;
+        }
+        
+        .praxis-box {
+            background: #e8f5e9;
+            border-left: 5px solid #4caf50;
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 8px;
+        }
+        
+        .praxis-box h4 {
+            color: #2e7d32;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .praxis-box h4:before {
+            content: "✓";
+            background: #4caf50;
+            color: white;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 10px;
+            font-weight: bold;
+        }
+        
+        .praxis-box ul {
+            margin-left: 35px;
+            margin-top: 10px;
+        }
+        
+        .praxis-box li {
+            margin: 8px 0;
+            color: #2c3e50;
+        }
+        
+        .wichtig-box {
+            background: #fff3cd;
+            border-left: 5px solid #ffc107;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+        
+        .wichtig-box h4 {
+            color: #856404;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .wichtig-box h4:before {
+            content: "⚠";
+            font-size: 1.5em;
+            margin-right: 10px;
+        }
+        
+        .kuechen-box {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 12px;
+            margin: 20px 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .kuechen-box h4 {
+            font-size: 1.3em;
+            margin-bottom: 15px;
+            border-bottom: 2px solid rgba(255,255,255,0.3);
+            padding-bottom: 10px;
+        }
+        
+        .kuechen-box ul {
+            margin-left: 20px;
+        }
+        
+        .kuechen-box li {
+            margin: 10px 0;
+            font-size: 1.05em;
+        }
+        
+        .zusammenarbeit-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .partner-card {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 10px;
+            border-left: 4px solid #9b59b6;
+            transition: all 0.3s ease;
+        }
+        
+        .partner-card:hover {
+            background: #e9ecef;
+            transform: translateX(5px);
+        }
+        
+        .partner-card strong {
+            color: #9b59b6;
+            display: block;
+            margin-bottom: 5px;
+            font-size: 1.1em;
+        }
+        
+        .footer {
+            background: #34495e;
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .footer p {
+            margin: 5px 0;
+        }
+        
+        .print-info {
+            display: none;
+        }
+        
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            
+            .container {
+                box-shadow: none;
+            }
+            
+            .ebene-card,
+            .partner-card {
+                break-inside: avoid;
+            }
+            
+            .print-info {
+                display: block;
+                font-size: 0.9em;
+                color: #666;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.5em;
+            }
+            
+            .content {
+                padding: 20px;
+            }
+            
+            .handlungsebenen {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📋 Expertenstandard Ernährungsmanagement</h1>
+            <p class="subtitle">Praxisorientierte Zusammenfassung der Kernaussagen DNQP Expertenstandards von Arne Domachofski</p>
+        </div>
+        
+        <div class="meta-info">
+            <p><strong>Herausgeber:</strong> Deutsches Netzwerk für Qualitätsentwicklung in der Pflege (DNQP)</p>
+            <p><strong>Aktuelle Version:</strong> 1. Aktualisierung Januar 2017</p>
+            <p><strong>Vollständiger Titel:</strong> Ernährungsmanagement zur Sicherung und Förderung der oralen Ernährung in der Pflege</p>
+        </div>
+        
+        <div class="content">
+            <div class="ziel-box">
+                <h2>🎯 Das Hauptziel</h2>
+                <p>Bei jedem Bewohner mit pflegerischem Unterstützungsbedarf ist die orale Nahrungsaufnahme entsprechend seinen Bedürfnissen und seinem Bedarf gesichert. Einer drohenden oder bestehenden Mangelernährung wird entgegengewirkt.</p>
+            </div>
+            
+            <div class="section">
+                <div class="section-title">
+                    <span class="number">1</span>
+                    <span>Die 6 Handlungsebenen im Überblick</span>
+                </div>
+                
+                <div class="handlungsebenen">
+                    <div class="ebene-card">
+                        <div class="ebene-nummer">1</div>
+                        <h4>Screening & Assessment</h4>
+                        <p>Systematische Erfassung des Ernährungszustands und der Risiken für Mangelernährung bei jedem Bewohner</p>
+                    </div>
+                    
+                    <div class="ebene-card">
+                        <div class="ebene-nummer">2</div>
+                        <h4>Maßnahmenplanung</h4>
+                        <p>Individuelle, mit dem Bewohner abgestimmte Planung von Ernährungsmaßnahmen</p>
+                    </div>
+                    
+                    <div class="ebene-card">
+                        <div class="ebene-nummer">3</div>
+                        <h4>Koordination</h4>
+                        <p>Abgestimmte Zusammenarbeit aller beteiligten Berufsgruppen (Pflege, Küche, Ärzte, Therapeuten)</p>
+                    </div>
+                    
+                    <div class="ebene-card">
+                        <div class="ebene-nummer">4</div>
+                        <h4>Unterstützung</h4>
+                        <p>Förderung der Selbstbestimmung und Eigenaktivität des Bewohners bei der Nahrungsaufnahme</p>
+                    </div>
+                    
+                    <div class="ebene-card">
+                        <div class="ebene-nummer">5</div>
+                        <h4>Information & Beratung</h4>
+                        <p>Umfassende Information und Beratung des Bewohners und seiner Angehörigen</p>
+                    </div>
+                    
+                    <div class="ebene-card">
+                        <div class="ebene-nummer">6</div>
+                        <h4>Evaluation</h4>
+                        <p>Regelmäßige Prüfung und Anpassung der Maßnahmen anhand der Zielerreichung</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section">
+                <div class="section-title">
+                    <span class="number">2</span>
+                    <span>Schutz der Mahlzeiten – Zentrale Neuerung 2017</span>
+                </div>
+                
+                <div class="wichtig-box">
+                    <h4>Geschützte Mahlzeiten bedeuten:</h4>
+                    <ul>
+                        <li>Keine störenden Tätigkeiten während der Essenszeiten (keine Medikamentengabe, Visiten, Therapien)</li>
+                        <li>Ruhige, angenehme Atmosphäre ohne Ablenkung</li>
+                        <li>Ausreichend Zeit für die Mahlzeiteneinnahme</li>
+                        <li>Unterstützung durch Pflegekräfte bei Bedarf</li>
+                        <li>Würdevolle Gestaltung der Esssituation</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="section">
+                <div class="section-title">
+                    <span class="number">3</span>
+                    <span>Praktische Kernaufgaben für die Küche</span>
+                </div>
+                
+                <div class="kuechen-box">
+                    <h4>🍳 Was die Küche leisten muss:</h4>
+                    <ul>
+                        <li><strong>Bedarfsgerechte Speisen:</strong> Nährstoffdichte Mahlzeiten mit ausreichend Energie und Protein</li>
+                        <li><strong>Angereicherte Kost:</strong> Hochkalorische Speisen bei Mangelernährungsrisiko (z.B. Sahne, Butter, Maltodextrin)</li>
+                        <li><strong>Flexible Portionen:</strong> Kleine und große Portionen, Zwischenmahlzeiten jederzeit verfügbar</li>
+                        <li><strong>Konsistenzanpassung:</strong> IDDSI-konforme Kostformen bei Kau-/Schluckbeschwerden</li>
+                        <li><strong>Individuelle Vorlieben:</strong> Berücksichtigung persönlicher Wünsche und kultureller Hintergründe</li>
+                        <li><strong>Appetitanregende Gestaltung:</strong> Optisch ansprechende, duftende, schmackhafte Speisen</li>
+                    </ul>
+                </div>
+                
+                <div class="praxis-box">
+                    <h4>Konkrete Maßnahmen für die Praxis</h4>
+                    <ul>
+                        <li>Anreicherung von Speisen mit hochwertigen Fetten und Proteinen</li>
+                        <li>Bereitstellung von Lieblingsspeisen auch außerhalb des Speiseplans</li>
+                        <li>Einsatz von Gewürzen und Kräutern zur Geschmacksverstärkung (bei nachlassendem Geschmackssinn)</li>
+                        <li>Farbkontraste auf dem Teller (wichtig bei Sehschwäche)</li>
+                        <li>Fingerfood-Angebote für Bewohner mit motorischen Einschränkungen</li>
+                        <li>Getränke in verschiedenen Temperaturen und Geschmacksrichtungen</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="section">
+                <div class="section-title">
+                    <span class="number">4</span>
+                    <span>Interdisziplinäre Zusammenarbeit</span>
+                </div>
+                
+                <div class="zusammenarbeit-grid">
+                    <div class="partner-card">
+                        <strong>Pflege</strong>
+                        Screening, Assessment, Dokumentation, Unterstützung bei der Nahrungsaufnahme
+                    </div>
+                    
+                    <div class="partner-card">
+                        <strong>Küche/Hauswirtschaft</strong>
+                        Bedarfsgerechte Speisenzubereitung, Anreicherung, Konsistenzanpassung
+                    </div>
+                    
+                    <div class="partner-card">
+                        <strong>Ärzte</strong>
+                        Medizinische Diagnostik, Verordnung von Trinknahrung, Therapieanpassung
+                    </div>
+                    
+                    <div class="partner-card">
+                        <strong>Ergotherapie</strong>
+                        Hilfsmittelberatung, Training der Selbstständigkeit beim Essen
+                    </div>
+                    
+                    <div class="partner-card">
+                        <strong>Logopädie</strong>
+                        Schluckdiagnostik, Therapie bei Dysphagie
+                    </div>
+                    
+                    <div class="partner-card">
+                        <strong>Angehörige</strong>
+                        Information über Vorlieben, Unterstützung bei Mahlzeiten, Feedback
+                    </div>
+                </div>
+                
+                <div class="wichtig-box">
+                    <h4>Erfolgreiche Zusammenarbeit erfordert:</h4>
+                    <ul>
+                        <li>Regelmäßige interdisziplinäre Fallbesprechungen</li>
+                        <li>Klare Kommunikationswege zwischen Küche und Pflege</li>
+                        <li>Schnelle Weitergabe von Informationen bei Veränderungen</li>
+                        <li>Gemeinsame Schulungen und Fortbildungen</li>
+                        <li>Festgelegte Verfahrensregelungen im Haus</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="section">
+                <div class="section-title">
+                    <span class="number">5</span>
+                    <span>Wichtige Tools & Instrumente</span>
+                </div>
+                
+                <div class="praxis-box">
+                    <h4>Screening-Instrumente</h4>
+                    <ul>
+                        <li><strong>PEMU:</strong> Pflegerische Erfassung von Mangelernährung und deren Ursachen (vom DNQP entwickelt)</li>
+                        <li><strong>MNA:</strong> Mini Nutritional Assessment</li>
+                        <li><strong>NRS-2002:</strong> Nutritional Risk Screening</li>
+                        <li><strong>BMI:</strong> Body-Mass-Index (Achtung: bei Älteren angepasste Werte!)</li>
+                    </ul>
+                </div>
+                
+                <div class="praxis-box">
+                    <h4>Dokumentation</h4>
+                    <ul>
+                        <li>Regelmäßige Gewichtskontrollen (mind. monatlich, bei Risiko wöchentlich)</li>
+                        <li>Trinkmengen-/Essprotokolle bei auffälligen Bewohnern</li>
+                        <li>Maßnahmenplanung mit konkreten Zielen</li>
+                        <li>Evaluation der Zielerreichung</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="section">
+                <div class="section-title">
+                    <span class="number">6</span>
+                    <span>Häufige Risikogruppen erkennen</span>
+                </div>
+                
+                <div class="wichtig-box">
+                    <h4>Besonders gefährdete Bewohner:</h4>
+                    <ul>
+                        <li>Menschen mit Demenz (vergessen zu essen, erkennen Speisen nicht)</li>
+                        <li>Bewohner mit Schluckstörungen (Dysphagie)</li>
+                        <li>Menschen mit Depression und Appetitlosigkeit</li>
+                        <li>Bewohner nach Krankenhausaufenthalt oder akuter Erkrankung</li>
+                        <li>Palliativbewohner</li>
+                        <li>Menschen mit chronischen Schmerzen</li>
+                        <li>Bewohner mit Kau-/Zahnproblemen</li>
+                        <li>Multimorbide Bewohner mit Polymedikation</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="section">
+                <div class="section-title">
+                    <span class="number">7</span>
+                    <span>Take-Home-Messages fürs Team</span>
+                </div>
+                
+                <div class="praxis-box">
+                    <h4>Das Wichtigste auf einen Blick:</h4>
+                    <ul>
+                        <li>✅ Jeder Bewohner hat Anspruch auf eine bedürfnis- und bedarfsgerechte Ernährung</li>
+                        <li>✅ Mahlzeiten sind geschützte Zeiten – keine Störungen!</li>
+                        <li>✅ Küche und Pflege arbeiten Hand in Hand</li>
+                        <li>✅ Individuelle Vorlieben und Bedürfnisse stehen im Mittelpunkt</li>
+                        <li>✅ Frühzeitiges Erkennen von Risiken verhindert Mangelernährung</li>
+                        <li>✅ Dokumentation ist Pflicht und Qualitätsnachweis</li>
+                        <li>✅ Angehörige sind wichtige Partner</li>
+                        <li>✅ Regelmäßige Evaluation sichert den Erfolg</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p><strong>Praxiszusammenfassung für interne Schulungszwecke</strong></p>
+            <p>Erstellt von: Arne Domachofski</p>
+            <p>Copyright November 2025</p>
+            <p class="print-info">Gedruckt am: <span id="print-date"></span></p>
+        </div>
+    </div>
+    
+    <script>
+        document.getElementById('print-date').textContent = new Date().toLocaleDateString('de-DE');
+    </script>
+</body>
+</html>
